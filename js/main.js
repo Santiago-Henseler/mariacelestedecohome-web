@@ -1,8 +1,38 @@
+let producto_abierto = false;
+let carrito = [];
+
+class creador {
+    constructor(nombre,precio, cantidad) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+    }
+}
+
+
 window.onload = function () {
     cargar_productos("aromas");
     cargar_productos("bath");
     cargar_productos("textiles");
     cargar_productos("gift");
+}
+
+function inicio(){
+
+    window.scrollTo(0,0);
+
+    if(producto_abierto){
+        document.getElementById("producto_abierto").style.display = "none";
+        producto_abierto = false;
+    }
+
+    document.getElementById("inicio").style.display = "block";
+    document.getElementById("Nosotros").style.display = "block";
+    document.getElementById("aromas").style.display = "block";
+    document.getElementById("bath").style.display = "block";
+    document.getElementById("textiles").style.display = "block";
+    document.getElementById("gift").style.display = "block";
+
 }
 
 function get_products(type){
@@ -42,7 +72,8 @@ function cargar_productos(type){
 }
 
 function ver_mas(type, pos){
-    return;
+    window.scrollTo(0,0);
+    producto_abierto = true;
     document.getElementById("inicio").style.display = "none";
     document.getElementById("Nosotros").style.display = "none";
     document.getElementById("aromas").style.display = "none";
@@ -50,18 +81,49 @@ function ver_mas(type, pos){
     document.getElementById("textiles").style.display = "none";
     document.getElementById("gift").style.display = "none";
 
-    let producto = get_products(type);
+    let producto = get_products(type)[pos];
 
-    document.getElementById("main").insertAdjacentHTML('afterbegin', ``); // insertar diseño de producto
-
+    document.getElementById("main").insertAdjacentHTML('afterbegin', ` 
+    <section class="py-5" id="producto_abierto">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${producto[3]}" alt="..."></div>
+                <div class="col-md-6">
+                   <!-- <div class="small mb-1">${type}</div> -->
+                    <h1 class="display-5 fw-bolder">${producto[0]}</h1>
+                    <div class="fs-5 mb-5">
+                    <!--  <span class="text-decoration-line-through">$${producto[1]}</span> -->
+                        <span>$${producto[1]}</span>
+                    </div>
+                    <p class="lead">${producto[2]}</p>
+                    <div class="d-flex">
+                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem">
+                        <button class="btn btn-outline-dark flex-shrink-0" onclick="add_cart('${type}','${pos}')" type="button">
+                            <i class="bi-cart-fill me-1"></i>
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>`);
 }
 
-function inicio(){
-    document.getElementById("inicio").style.display = "block";
-    document.getElementById("Nosotros").style.display = "block";
-    document.getElementById("aromas").style.display = "block";
-    document.getElementById("bath").style.display = "block";
-    document.getElementById("textiles").style.display = "block";
-    document.getElementById("gift").style.display = "block";
+function existe_producto(producto, cantidad){
+    let existe = false;
+    for (i in carrito) {
+        if (carrito[i]["nombre"] == producto) {
+            existe = true;
+            carrito[i]["cantidad"] += cantidad;
+        }
+    }
+    return existe;
+}
 
+function add_cart(type, pos){
+    let producto = get_products(type)[pos];
+    let cantidad = parseInt(document.getElementById("inputQuantity").value);
+    if(!existe_producto(producto[0], cantidad)){
+        carrito.push(new creador(producto[0], producto[1], cantidad));
+    }
 }
