@@ -246,8 +246,14 @@ a {
 
 .product-section {
   padding: 7rem 0; }
+
+  .product-section .product-item img{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
   .product-section .product-item {
-    background-color:  #A3B18A;
+    background-color:  #ffffff;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     text-align: center;
     text-decoration: none;

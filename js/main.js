@@ -1,8 +1,9 @@
 let producto_abierto = false;
+let carrito_abierto = false;
 let carrito = [];
 
 class creador {
-    constructor(nombre,precio, cantidad) {
+    constructor(nombre,precio,cantidad) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
@@ -24,6 +25,11 @@ function inicio(){
     if(producto_abierto){
         document.getElementById("producto_abierto").style.display = "none";
         producto_abierto = false;
+    }
+
+    if(carrito_abierto){
+        document.getElementById("carrito").style.display = "none";
+        carrito_abierto = false;
     }
 
     document.getElementById("inicio").style.display = "block";
@@ -59,7 +65,7 @@ function cargar_productos(type){
         product_section.children[0].children[1].children[0].innerHTML += `
         <div class="col-12 col-md-4 col-lg-3 mb-5">
             <a class="product-item">
-                <img src="${productos[i][3][0]}" class="img-fluid product-thumbnail">
+                <img src="${productos[i][4][0]}" class="img-fluid product-thumbnail" width="500" height="600">
                 <h3 class="product-title">${productos[i][0]}</h3>
                 <strong class="product-price">$${productos[i][1]}</strong>
     
@@ -87,15 +93,15 @@ function ver_mas(type, pos){
     <section class="py-5" id="producto_abierto">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${producto[3]}" alt="..."></div>
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${producto[4]}" alt="..."></div>
                 <div class="col-md-6">
-                   <!-- <div class="small mb-1">${type}</div> -->
+                   <div class="small mb-1">${producto[2]}</div>
                     <h1 class="display-5 fw-bolder">${producto[0]}</h1>
                     <div class="fs-5 mb-5">
                     <!--  <span class="text-decoration-line-through">$${producto[1]}</span> -->
                         <span>$${producto[1]}</span>
                     </div>
-                    <p class="lead">${producto[2]}</p>
+                    <p class="lead">${producto[3]}</p>
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem">
                         <button class="btn btn-outline-dark flex-shrink-0" onclick="add_cart('${type}','${pos}')" type="button">
@@ -107,6 +113,172 @@ function ver_mas(type, pos){
             </div>
         </div>
 </section>`);
+}
+
+function abrir_carrito(){
+    
+    if(carrito.length < 1){
+        
+        if(!carrito_abierto){
+            swal("No hay productos en el carrito", "", "error");
+        }
+        
+        inicio()
+        return;
+    }
+    
+    inicio()
+
+    window.scrollTo(0,0);
+    carrito_abierto = true;
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("Nosotros").style.display = "none";
+    document.getElementById("aromas").style.display = "none";
+    document.getElementById("bath").style.display = "none";
+    document.getElementById("textiles").style.display = "none";
+    document.getElementById("gift").style.display = "none";
+
+    let products = [];
+    let total = 0;
+
+    for(let i = 0; i < carrito.length; i++){
+        total += carrito[i]["cantidad"] * carrito[i]["precio"];
+        products.push(
+            `<tr>
+                <td class="product-name">
+                <h2 class="h5 text-black">${carrito[i]["nombre"]}</h2>
+                </td>
+                <td class="product-name">
+                <h2 class="h5 text-black">${carrito[i]["nombre"]}</h2>
+                </td>
+                <td>$${carrito[i]["precio"]}</td>
+                <td>
+                <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+                    <div class="input-group-prepend">
+                    <button class="btn btn-outline-black decrease" type="button">&minus;</button>
+                    </div>
+                    <input type="text" class="form-control text-center quantity-amount" value="${carrito[i]["cantidad"]}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <div class="input-group-append">
+                    <button class="btn btn-outline-black increase" type="button">&plus;</button>
+                    </div>
+                </div>
+        
+                </td>
+                <td>$${carrito[i]["cantidad"] * carrito[i]["precio"] }</td>
+                <td><a onclick="borrar_producto('${carrito[i]["nombre"]}')" class="btn btn-red btn-sm">X</a></td>
+            </tr>
+          `
+        )
+    }
+
+    document.getElementById("main").insertAdjacentHTML('afterbegin', ` 
+    <section class="py-5" id="carrito">
+    <div class="untree_co-section before-footer-section">
+    <div class="container">
+      <div class="row mb-5">
+        <form class="col-md-12" method="post">
+          <div class="site-blocks-table">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="product-name">Producto</th>
+                  <th class="product-thumbnail">Tipo</th>
+                  <th class="product-price">Precio</th>
+                  <th class="product-quantity">Cantidad</th>
+                  <th class="product-total">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${products}
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    <center>
+      <div class="row">
+        <div class="col-md-6 pl-5">
+          <div class="row justify-content-end">
+            <div class="col-md-7">
+              <div class="row mb-5">
+              <div class="col-md-12">
+
+                <div class="p-3 p-lg-5 border bg-white">
+                  <table class="table site-block-order-table mb-5">
+                    <tbody>
+                      <tr>
+                        <td class="text-black font-weight-bold"><strong> <h2 class="h3 mb-3 text-black">Total</h2></strong></td>
+                        <td class="text-black font-weight-bold"><strong>$${total}</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                <div class="border p-3 mb-5">
+                    <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="true" aria-controls="collapsepaypal">Formas de pago</a></h3>
+
+                    <div class="collapse" id="collapsepaypal">
+                      <div class="py-2">
+                        <p class="mb-0">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+                      </div>
+                    </div>
+                </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                    <button class="btn btn-lg py-3 btn-block" onclick="enviar_compra()">Terminar compra</button>
+                    </div>
+                </div>
+
+                </div>
+              </div>
+            </div>
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      </center>
+    </div>
+  </div>
+</section>`);
+}
+
+function enviar_compra(){
+
+    let prod = []
+
+    let precioFinal = 0
+
+    for (i in carrito) {
+        prod += `${carrito[i]["nombre"]}+++++++${carrito[i]["cantidad"]}+++%24${carrito[i]["precio"] * carrito[i]["cantidad"]}%0A`;
+
+        precioFinal += carrito[i]["precio"] * carrito[i]["cantidad"];
+
+    }
+
+    let telefono = "";
+
+    let url = `https://api.whatsapp.com/send?phone=${telefono}&text=%2A_Maria+Celeste+Home+%26+Deco_%2A%0A%0Aproducto+++%7C++cantidad++%7C++total+++%0A+${prod}%0A%0A%2ATotal%3A%2A+%24${precioFinal}`;
+
+    window.open(url);
+    location.reload(true);
+
+
+}
+
+function borrar_producto(nombre){
+
+    for (i in carrito) {
+        if (carrito[i]["nombre"] == nombre) {
+            carrito.splice(i, 1);
+        }
+    }
+
+    swal("Producto borrado del carrito", "", "success");
+
+    carrito_abierto = true;
+    abrir_carrito();
 }
 
 function existe_producto(producto, cantidad){
@@ -121,6 +293,7 @@ function existe_producto(producto, cantidad){
 }
 
 function add_cart(type, pos){
+    swal("Producto añiadido al carrito", "", "success");
     let producto = get_products(type)[pos];
     let cantidad = parseInt(document.getElementById("inputQuantity").value);
     if(!existe_producto(producto[0], cantidad)){
