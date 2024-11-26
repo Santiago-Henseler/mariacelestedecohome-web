@@ -1,7 +1,7 @@
 const AROMAS = {
     0:2,
-    1: ["Home spray", 5000, "400mm", "Realizado con perfumeria fina para aromatizar tus textiles y generos mas delicados.", ["imagenes/aromas/spray1.jpg"]],
-    2: ["Home diffuser", 5000,"300mm", "Difusor de larga duracion para aromatizar tus ambientes. Incluye 4 varillas negras", ["imagenes/aromas/difusor1.jpg"]],
+    1: ["Home spray", 5000, "400mm", "Realizado con perfumeria fina para aromatizar tus textiles y generos mas delicados.", ["imagenes/aromas/spray1.jpg", "imagenes/aromas/spray2.jpg", "imagenes/aromas/spray3.jpg",  "imagenes/aromas/spray4.jpg"]],
+    2: ["Home diffuser", 5000,"300mm", "Difusor de larga duracion para aromatizar tus ambientes. Incluye 4 varillas negras", ["imagenes/aromas/difusor1.jpg", "imagenes/aromas/difusor2.jpg", "imagenes/aromas/difusor3.jpg",  "imagenes/aromas/difusor4.jpg"]],
 }
 
 const BATH = {
@@ -13,9 +13,9 @@ const BATH = {
 
 const TEXTILES = {
     0:3,
-    1: ["Almohadon tusor liso", 5000, "50cm x 50cm", "Descripcion del producto", ["imagenes/difusor1.jpg"]],
-    2: ["Almohadon tusor love", 5000,"30cm x 60cm", "Descripcion del producto", ["imagenes/almohadon/almohadon1.jpg"]],
-    3: ["Almohadon tusor mandala", 5000, "50cm x 50cm", "Descripcion del producto", ["imagenes/almohadon/almohadon2.jpg"]],
+    1: ["Almohadon tusor liso", 5000, "50cm x 50cm", "Descripcion del producto", ["imagenes/almohadon/almohadon3.jpg"]],
+    2: ["Almohadon tusor love", 5000,"30cm x 60cm", "Descripcion del producto", ["imagenes/almohadon/almohadon1.jpg", "imagenes/almohadon/love2.jpg",  "imagenes/almohadon/love3.jpg"]],
+    3: ["Almohadon tusor mandala", 5000, "50cm x 50cm", "Descripcion del producto", ["imagenes/almohadon/almohadon2.jpg",  "imagenes/almohadon/mandala2.jpg",  "imagenes/almohadon/mandala3.jpg"]],
 }
 
 const GIFT = {

@@ -64,12 +64,12 @@ function cargar_productos(type){
     for(let i = 1; i < total+1; i++){
         product_section.children[0].children[1].children[0].innerHTML += `
         <div class="col-12 col-md-4 col-lg-3 mb-5">
-            <a class="product-item">
+            <a class="product-item" onclick="ver_mas('${type}','${i}')">
                 <img src="${productos[i][4][0]}" class="img-fluid product-thumbnail" width="500" height="600">
                 <h3 class="product-title">${productos[i][0]}</h3>
                 <strong class="product-price">$${productos[i][1]}</strong>
     
-                <span class="icon-cross" onclick="ver_mas('${type}','${i}')">
+                <span class="icon-cross">
                     <img src="images/cross.svg" class="img-fluid">
                 </span>
             </a>
@@ -89,11 +89,42 @@ function ver_mas(type, pos){
 
     let producto = get_products(type)[pos];
 
+
+    let carrusel = "";
+
+    for (i in producto[4]){
+
+      if(i == 0){
+        carrusel +=`     
+        <div class="carousel-item active">
+          <img src="${producto[4][i]}"  alt="Imagen 1" class="d-block w-100">
+        </div>`
+      }else{
+        carrusel +=`     
+        <div class="carousel-item">
+          <img src="${producto[4][i]}"  alt="Imagen 1" class="d-block w-100">
+        </div>`
+      }
+    }
     document.getElementById("main").insertAdjacentHTML('afterbegin', ` 
     <section class="py-5" id="producto_abierto">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${producto[4]}" alt="..."></div>
+                <div class="col-md-6">
+                  <div id="ProdCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                    ${carrusel}
+                    <button class="carousel-control-prev" type="button" data-bs-target="#ProdCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#ProdCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                    </div>
+                  </div>  
+                </div>
                 <div class="col-md-6">
                    <div class="small mb-1">${producto[2]}</div>
                     <h1 class="display-5 fw-bolder">${producto[0]}</h1>
