@@ -178,6 +178,69 @@ a {
       margin-right: 0px; }
       .custom-navbar .custom-navbar-cta li:first-child {
         margin-right: 20px; }
+.navbar {
+            background-color: #333;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .custom-navbar-nav {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item, .nav-link {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .nav-link:hover {
+            background-color: #E9BF81;
+            border-radius: 5px;
+        }
+
+        /* Estilo del submenú desplegable */
+        .cn-col-4 {
+            display: none;
+            position: absolute;
+            background-color: #E9BF81;
+            top: 100%;
+            left: 0;
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+            border-radius: 5px;
+            z-index: 10;
+        }
+
+        .cn-col-4 a:hover {
+          background-color: #cea971;
+        }
+
+        /* Mostrar el submenú al pasar el cursor */
+        .nav-item:hover .cn-col-4 {
+            display: block;
+        }
+
+        /* Icono del carrito */
+        .custom-navbar-cta img {
+            width: 24px;
+            height: 24px;
+        }
+
+
+
 
 .hero {
   background: #FEFAE0;
