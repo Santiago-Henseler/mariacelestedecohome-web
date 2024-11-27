@@ -1,7 +1,7 @@
 const AROMAS = {
     0:2,
-    1: ["Home spray", 5000, "400mm", "Realizado con perfumeria fina para aromatizar tus textiles y generos mas delicados.", ["imagenes/aromas/spray1.jpg", "imagenes/aromas/spray2.jpg", "imagenes/aromas/spray3.jpg",  "imagenes/aromas/spray4.jpg"], []],
-    2: ["Home diffuser", 5000,"300mm", "Difusor de larga duracion para aromatizar tus ambientes. Incluye 4 varillas negras", ["imagenes/aromas/difusor1.jpg", "imagenes/aromas/difusor2.jpg", "imagenes/aromas/difusor3.jpg",  "imagenes/aromas/difusor4.jpg"], []],
+    1: ["Home spray", 5000, "400mm", "Realizado con perfumeria fina para aromatizar tus textiles y generos mas delicados.", ["imagenes/aromas/spray1.jpg", "imagenes/aromas/spray2.jpg", "imagenes/aromas/spray3.jpg",  "imagenes/aromas/spray4.jpg"], ["Oslo", "Verbena", "White flowers", "Orange pepper", "Berna"]],
+    2: ["Home diffuser", 5000,"300mm", "Difusor de larga duracion para aromatizar tus ambientes. Incluye 4 varillas negras", ["imagenes/aromas/difusor1.jpg", "imagenes/aromas/difusor2.jpg", "imagenes/aromas/difusor3.jpg",  "imagenes/aromas/difusor4.jpg"], ["Oslo", "Verbena", "White flowers", "Orange pepper", "Berna"]],
 }
 
 const BATH = {

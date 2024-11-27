@@ -3,10 +3,11 @@ let carrito_abierto = false;
 let carrito = [];
 
 class creador {
-    constructor(nombre,precio,cantidad) {
+    constructor(nombre,precio,cantidad, tipo) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.tipo = tipo;
     }
 }
 
@@ -106,6 +107,24 @@ function ver_mas(type, pos){
         </div>`
       }
     }
+
+    let opciones = ""
+
+    if(producto[5].length > 0){
+      if(type == "aromas"){
+        opciones += `<label for="opciones">Selecciona un aroma:</label>
+                     <select id="opciones" name="opciones"> ` 
+      }else if(type == "textiles"){
+        opciones += `<label for="opciones">Selecciona un color:</label>
+                     <select id="opciones" name="opciones"> ` 
+      }
+      for(i in producto[5]){
+        opciones += `<option value="${producto[5][i]}">${producto[5][i]}</option> ` 
+      }
+      opciones += `</select>` 
+
+    }
+
     document.getElementById("main").insertAdjacentHTML('afterbegin', ` 
     <section class="py-5" id="producto_abierto">
         <div class="container px-4 px-lg-5 my-5">
@@ -133,6 +152,9 @@ function ver_mas(type, pos){
                         <span>$${producto[1]}</span>
                     </div>
                     <p class="lead">${producto[3]}</p>
+                    <div class="fs-5 mb-5">
+                    ${opciones}
+                    </div>
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem">
                         <button class="btn btn-outline-dark flex-shrink-0" onclick="add_cart('${type}','${pos}')" type="button">
@@ -180,7 +202,7 @@ function abrir_carrito(){
                 <h2 class="h5 text-black">${carrito[i]["nombre"]}</h2>
                 </td>
                 <td class="product-name">
-                <h2 class="h5 text-black">${carrito[i]["nombre"]}</h2>
+                <h2 class="h5 text-black">${carrito[i]["tipo"]}</h2>
                 </td>
                 <td>$${carrito[i]["precio"]}</td>
                 <td>
@@ -196,7 +218,7 @@ function abrir_carrito(){
         
                 </td>
                 <td>$${carrito[i]["cantidad"] * carrito[i]["precio"] }</td>
-                <td><a onclick="borrar_producto('${carrito[i]["nombre"]}')" class="btn btn-red btn-sm">X</a></td>
+                <td><a onclick="borrar_producto('${carrito[i]["nombre"]}', '${carrito[i]["tipo"]}')" class="btn btn-red btn-sm">X</a></td>
             </tr>
           `
         )
@@ -282,7 +304,7 @@ function enviar_compra(){
     let precioFinal = 0
 
     for (i in carrito) {
-        prod += `${carrito[i]["nombre"]}+++++++${carrito[i]["cantidad"]}+++%24${carrito[i]["precio"] * carrito[i]["cantidad"]}%0A`;
+        prod += `${carrito[i]["nombre"]}+++++++${carrito[i]["tipo"]}+++++++${carrito[i]["cantidad"]}+++%24${carrito[i]["precio"] * carrito[i]["cantidad"]}%0A`;
 
         precioFinal += carrito[i]["precio"] * carrito[i]["cantidad"];
 
@@ -290,7 +312,7 @@ function enviar_compra(){
 
     let telefono = "";
 
-    let url = `https://api.whatsapp.com/send?phone=${telefono}&text=%2A_Maria+Celeste+Home+%26+Deco_%2A%0A%0Aproducto+++%7C++cantidad++%7C++total+++%0A+${prod}%0A%0A%2ATotal%3A%2A+%24${precioFinal}`;
+    let url = `https://api.whatsapp.com/send?phone=${telefono}&text=%2A_Maria+Celeste+Home+%26+Deco_%2A%0A%0Aproducto+++%7C++tipo+++%7C++cantidad++%7C++total+++%0A+${prod}%0A%0A%2ATotal%3A%2A+%24${precioFinal}`;
 
     window.open(url);
     location.reload(true);
@@ -298,10 +320,10 @@ function enviar_compra(){
 
 }
 
-function borrar_producto(nombre){
+function borrar_producto(nombre, selected){
 
     for (i in carrito) {
-        if (carrito[i]["nombre"] == nombre) {
+        if (carrito[i]["nombre"] == nombre, carrito[i]["tipo"] == selected) {
             carrito.splice(i, 1);
         }
     }
@@ -312,10 +334,10 @@ function borrar_producto(nombre){
     abrir_carrito();
 }
 
-function existe_producto(producto, cantidad){
+function existe_producto(producto, cantidad, selected){
     let existe = false;
     for (i in carrito) {
-        if (carrito[i]["nombre"] == producto) {
+        if (carrito[i]["nombre"] == producto, carrito[i]["tipo"] == selected) {
             existe = true;
             carrito[i]["cantidad"] += cantidad;
         }
@@ -326,8 +348,15 @@ function existe_producto(producto, cantidad){
 function add_cart(type, pos){
     swal("Producto añiadido al carrito", "", "success");
     let producto = get_products(type)[pos];
+
+    let selected = "";
+
+    if(type == "aromas" || type == "textiles"){
+      selected = document.getElementById("opciones").value;
+    }
+
     let cantidad = parseInt(document.getElementById("inputQuantity").value);
-    if(!existe_producto(producto[0], cantidad)){
-        carrito.push(new creador(producto[0], producto[1], cantidad));
+    if(!existe_producto(producto[0], cantidad, selected)){
+        carrito.push(new creador(producto[0], producto[1], cantidad, selected));
     }
 }
