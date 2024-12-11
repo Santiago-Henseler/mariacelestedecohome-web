@@ -112,17 +112,32 @@ function ver_mas(type, pos){
 
     if(producto[5].length > 0){
       if(type == "aromas"){
-        opciones += `<label for="opciones">Selecciona un aroma:</label>
-                     <select id="opciones" name="opciones"> ` 
+        opciones += `      
+        <label for="opciones">Selecciona un aroma:</label>
+                     <select id="opciones"  onchange="cambio_aroma()" name="opciones"> ` 
       }else if(type == "textiles"){
         opciones += `<label for="opciones">Selecciona un color:</label>
                      <select id="opciones" name="opciones"> ` 
       }
       for(i in producto[5]){
-        opciones += `<option value="${producto[5][i]}">${producto[5][i]}</option> ` 
+        opciones += `<option value="${producto[5][i]}")">${producto[5][i]}</option> ` 
       }
       opciones += `</select>` 
+    }
 
+    let aromas = "";
+
+    if(type == "aromas"){
+      aromas += `               
+      <div class="border p-3 mb-5" id="aromadesc">
+      <h3 class="h6 mb-0"><a class="d-block"  role="button" aria-expanded="true" aria-controls="collapsepaypal">OSLO</a></h3>
+
+      <div  id="collapsepaypal">
+        <div class="py-2">
+          <p class="mb-0">Blend dulce con tinte frutal. Notas de sandía, sándalo, vainilla y coco. Crea un espacio de concentración y relajación.</p>
+        </div>
+      </div>
+  </div>` 
     }
 
     document.getElementById("main").insertAdjacentHTML('afterbegin', ` 
@@ -155,6 +170,9 @@ function ver_mas(type, pos){
                     <div class="fs-5 mb-5">
                     ${opciones}
                     </div>
+                    <div id="aromas_tipo" class="fs-5 mb-5">
+                    ${aromas}
+                    </div>
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem">
                         <button class="btn btn-outline-dark flex-shrink-0" onclick="add_cart('${type}','${pos}')" type="button">
@@ -166,6 +184,39 @@ function ver_mas(type, pos){
             </div>
         </div>
 </section>`);
+}
+
+function cambio_aroma(){
+
+  let value = document.getElementById("opciones").value;
+
+  let html = document.getElementById("aromadesc");
+
+  html.innerHTML = `               
+  <h3 class="h6 mb-0"><a class="d-block"  role="button" aria-expanded="true" aria-controls="collapsepaypal">${value}</a></h3>
+
+  <div  id="collapsepaypal">
+    <div class="py-2">
+      <p class="mb-0">${aroma_type(value)}</p>
+    </div>
+  </div>
+` ;
+
+}
+
+function aroma_type(type){
+  if(type == "Oslo"){
+    return "Blend dulce con tinte frutal. Notas de sandía, sándalo, vainilla y coco. Crea un espacio de concentración y relajación.";
+  }else if(type == "Verbena"){
+    return "Blend herbal y cítrico. Notas de lima, limón y verbena. Transmite una sensación de energía y optimismo.";
+  }else if(type == "White flowers"){
+    return "blend floral envolvente. Notas de flores blancas, nardos, jazmines, junquillos y tuberosas. Evocan un ambiente mágico y tranquilo";
+  }else if(type == "Orange pepper"){
+    return "blend cítrico y picante. Notas de naranja y cítricos que contrastan con notas especiadas y picantes. Genera una sensación de bienestar y alegría.";
+  }else{
+    return "Blend cítrico con tinte floral. Notas de bergamota, lino y flores cítricas. Otorgan un momento de calma y frescura."
+  }
+
 }
 
 function abrir_carrito(){
@@ -271,7 +322,7 @@ function abrir_carrito(){
 
                     <div class="collapse" id="collapsepaypal">
                       <div class="py-2">
-                        <p class="mb-0">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+                        <p class="mb-0">Mercado pago - Transferencia - Efectivo</p>
                       </div>
                     </div>
                 </div>
