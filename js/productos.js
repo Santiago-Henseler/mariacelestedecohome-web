@@ -19,11 +19,10 @@ const TEXTILES = {
 }
 
 const GIFT = {
-    0:6,
-    1: ["Home spray", 5000, "Descripcion del producto", ["images/product-3.png"]],
-    2: ["Home spray", 5000, "Descripcion del producto", ["images/product-3.png"]],
-    3: ["Home spray", 5000, "Descripcion del producto", ["images/product-3.png"]],
-    4: ["Home spray", 5000, "Descripcion del producto", ["images/product-3.png"]],
-    5: ["Home spray", 5000, "Descripcion del producto", ["images/product-3.png"]],
-    6: ["Home spray", 5000, "Descripcion del producto", ["images/product-3.png"]],
+    0:5,
+    1: ["GiftCard Amarilla", 20000, "", "", ["imagenes/gift/gif1.jpg"], []],
+    2: ["GiftCard Naraja", 30000, "", "", ["imagenes/gift/gif2.jpg"], []],
+    3: ["GiftCard Marron", 40000, "", "", ["imagenes/gift/gif3.jpg"], []],
+    4: ["GiftCard Verde", 50000, "", "", ["imagenes/gift/gif4.jpg"], []],
+    5: ["GiftCard Blanca", "A definir", "", "", ["imagenes/gift/gif5.jpg"], []],
 }

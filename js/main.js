@@ -346,7 +346,7 @@ function existe_producto(producto, cantidad, selected){
 }
 
 function add_cart(type, pos){
-    swal("Producto añiadido al carrito", "", "success");
+    swal("Producto añidido al carrito", "", "success");
     let producto = get_products(type)[pos];
 
     let selected = "";
