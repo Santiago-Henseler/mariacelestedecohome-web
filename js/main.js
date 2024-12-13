@@ -16,6 +16,7 @@ window.onload = function () {
     cargar_productos("aromas");
     cargar_productos("bath");
     cargar_productos("textiles");
+    cargar_productos("deco");
     cargar_productos("gift");
 }
 
@@ -38,6 +39,7 @@ function inicio(){
     document.getElementById("aromas").style.display = "block";
     document.getElementById("bath").style.display = "block";
     document.getElementById("textiles").style.display = "block";
+    document.getElementById("deco").style.display = "block";
     document.getElementById("gift").style.display = "block";
 
 }
@@ -52,6 +54,8 @@ function get_products(type){
         return TEXTILES;
     }else if(type == "gift"){
         return GIFT;
+    }else if(type == "deco"){
+      return DECO;
     }
 
 }
@@ -86,6 +90,7 @@ function ver_mas(type, pos){
     document.getElementById("aromas").style.display = "none";
     document.getElementById("bath").style.display = "none";
     document.getElementById("textiles").style.display = "none";
+    document.getElementById("deco").style.display = "none";
     document.getElementById("gift").style.display = "none";
 
     let producto = get_products(type)[pos];
@@ -115,7 +120,7 @@ function ver_mas(type, pos){
         opciones += `      
         <label for="opciones">Selecciona un aroma:</label>
                      <select id="opciones"  onchange="cambio_aroma()" name="opciones"> ` 
-      }else if(type == "textiles"){
+      }else if(type == "textiles" || type == "deco"){
         opciones += `<label for="opciones">Selecciona un color:</label>
                      <select id="opciones" name="opciones"> ` 
       }
@@ -240,6 +245,7 @@ function abrir_carrito(){
     document.getElementById("aromas").style.display = "none";
     document.getElementById("bath").style.display = "none";
     document.getElementById("textiles").style.display = "none";
+    document.getElementById("deco").style.display = "none";
     document.getElementById("gift").style.display = "none";
 
     let products = [];
@@ -361,7 +367,7 @@ function enviar_compra(){
 
     }
 
-    let telefono = "";
+    let telefono = "+5401124030967";
 
     let url = `https://api.whatsapp.com/send?phone=${telefono}&text=%2A_Maria+Celeste+Home+%26+Deco_%2A%0A%0Aproducto+++%7C++tipo+++%7C++cantidad++%7C++total+++%0A+${prod}%0A%0A%2ATotal%3A%2A+%24${precioFinal}`;
 
@@ -402,7 +408,7 @@ function add_cart(type, pos){
 
     let selected = "";
 
-    if(type == "aromas" || type == "textiles"){
+    if(type == "aromas" || type == "textiles" || type == "deco"){
       selected = document.getElementById("opciones").value;
     }
 

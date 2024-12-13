@@ -18,6 +18,11 @@ const TEXTILES = {
     3: ["Almohadon tusor mandala", 26000, "50cm x 50cm", "Bordado artesanal a mano en distintos tipos de lana sobre tela tusor.", ["imagenes/almohadon/almohadon2.jpg",  "imagenes/almohadon/mandala2.jpg",  "imagenes/almohadon/mandala3.jpg"], ["Arena con bordado beige", "Crudo con bordado beige", "Khaki con bordado crudo"]],
 }
 
+const DECO = {
+    0:1,
+    1: ["Bandejas marmoladas", 10000, "10cm x 18cm", "Bandejas simil marmol de resina", ["imagenes/deco/tabla1.jpg", "imagenes/deco/tabla2.jpg", "imagenes/deco/tabla3.jpg"], ["Blanca", "Negra"]]
+}
+
 const GIFT = {
     0:5,
     1: ["GiftCard Amarilla", 20000, "", "", ["imagenes/gift/gif1.jpg"], []],
