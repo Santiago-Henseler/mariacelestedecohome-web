@@ -80,6 +80,12 @@ function cargar_productos(type){
             </a>
         </div> `;
     }
+
+    if(type == "gift"){
+      product_section.children[0].children[0].innerHTML += `<p>Compra la GIFT CARD, luego nos pasas la información de la persona agasajada. Le enviamos o
+      te enviamos como prefieras la GIFT CARD para que canjee.</p>`
+    }
+
 }
 
 function ver_mas(type, pos){
@@ -214,9 +220,9 @@ function aroma_type(type){
     return "Blend dulce con tinte frutal. Notas de sandía, sándalo, vainilla y coco. Crea un espacio de concentración y relajación.";
   }else if(type == "Verbena"){
     return "Blend herbal y cítrico. Notas de lima, limón y verbena. Transmite una sensación de energía y optimismo.";
-  }else if(type == "White flowers"){
+  }else if(type == "White Flowers"){
     return "blend floral envolvente. Notas de flores blancas, nardos, jazmines, junquillos y tuberosas. Evocan un ambiente mágico y tranquilo";
-  }else if(type == "Orange pepper"){
+  }else if(type == "Orange Pepper"){
     return "blend cítrico y picante. Notas de naranja y cítricos que contrastan con notas especiadas y picantes. Genera una sensación de bienestar y alegría.";
   }else{
     return "Blend cítrico con tinte floral. Notas de bergamota, lino y flores cítricas. Otorgan un momento de calma y frescura."

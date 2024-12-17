@@ -435,6 +435,7 @@ a {
       height: 70%; }
 
 .why-choose-section {
+  background-color: #ffffff ;
   padding: 7rem 0; }
   .why-choose-section .img-wrap {
     position: relative; }
@@ -450,8 +451,7 @@ a {
       -ms-transform: translate(-40%, -40%);
       transform: translate(-40%, -40%);
       z-index: -1; }
-    .why-choose-section .img-wrap img {
-      border-radius: 20px; }
+
 
 .feature {
   margin-bottom: 30px; }
