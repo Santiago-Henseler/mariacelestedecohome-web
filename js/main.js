@@ -41,6 +41,8 @@ function inicio(){
     document.getElementById("textiles").style.display = "block";
     document.getElementById("deco").style.display = "block";
     document.getElementById("gift").style.display = "block";
+    document.getElementById("Asesorias").style.display = "block";
+    document.getElementById("mayorista").style.display = "block";
 
 }
 
@@ -98,6 +100,8 @@ function ver_mas(type, pos){
     document.getElementById("textiles").style.display = "none";
     document.getElementById("deco").style.display = "none";
     document.getElementById("gift").style.display = "none";
+    document.getElementById("Asesorias").style.display = "none";
+    document.getElementById("mayorista").style.display = "none";
 
     let producto = get_products(type)[pos];
 
@@ -109,12 +113,12 @@ function ver_mas(type, pos){
       if(i == 0){
         carrusel +=`     
         <div class="carousel-item active">
-          <img src="${producto[4][i]}"  alt="Imagen 1" class="d-block w-100">
+          <img src="${producto[4][i]}" style="filter: contrast(100%);"  alt="Imagen 1" class="d-block w-100">
         </div>`
       }else{
         carrusel +=`     
         <div class="carousel-item">
-          <img src="${producto[4][i]}"  alt="Imagen 1" class="d-block w-100">
+          <img src="${producto[4][i]}" style="filter: contrast(100%);" alt="Imagen 1" class="d-block w-100">
         </div>`
       }
     }
@@ -253,6 +257,8 @@ function abrir_carrito(){
     document.getElementById("textiles").style.display = "none";
     document.getElementById("deco").style.display = "none";
     document.getElementById("gift").style.display = "none";
+    document.getElementById("Asesorias").style.display = "none";
+    document.getElementById("mayorista").style.display = "none";
 
     let products = [];
     let total = 0;
