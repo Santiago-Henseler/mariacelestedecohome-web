@@ -70,17 +70,20 @@ function cargar_productos(type){
 
     for(let i = 1; i < total+1; i++){
         product_section.children[0].children[1].children[0].innerHTML += `
-        <div class="col-12 col-md-4 col-lg-3 mb-5">
-            <a class="product-item" onclick="ver_mas('${type}','${i}')">
-                <img src="${productos[i][4][0]}" class="img-fluid product-thumbnail" width="500" height="600">
-                <h3 class="product-title">${productos[i][0]}</h3>
-                <strong class="product-price">$${productos[i][1]}</strong>
-    
-                <span class="icon-cross">
-                    <img src="images/cross.svg" class="img-fluid">
-                </span>
-            </a>
-        </div> `;
+        <div class="col-12 col-md-4 col-lg-3 mb-5" style="width: 300px;">
+        <a class="product-item" onclick="ver_mas('${type}','${i}')">
+          <img 
+            src="${productos[i][4][0]}" 
+            class="img-fluid product-thumbnail" 
+            style="object-fit: cover; width: 100%; height: 300px;">
+          <h3 class="product-title">${productos[i][0]}</h3>
+          <strong class="product-price">$${productos[i][1]}</strong>
+          <span class="icon-cross">
+            <img src="images/cross.svg" class="img-fluid">
+          </span>
+        </a>
+      </div>
+      `;
     }
 
     if(type == "gift"){
@@ -102,7 +105,7 @@ function ver_mas(type, pos){
     document.getElementById("gift").style.display = "none";
     document.getElementById("Asesorias").style.display = "none";
     document.getElementById("mayorista").style.display = "none";
-
+    window.scrollTo(0,0);
     let producto = get_products(type)[pos];
 
 
@@ -129,10 +132,14 @@ function ver_mas(type, pos){
       if(type == "aromas"){
         opciones += `      
         <label for="opciones">Selecciona un aroma:</label>
-                     <select id="opciones"  onchange="cambio_aroma()" name="opciones"> ` 
-      }else if(type == "textiles" || type == "deco"){
+                     <select id="opciones" onchange="cambio_aroma()" name="opciones"> ` 
+      }else if(type == "deco"){
         opciones += `<label for="opciones">Selecciona un color:</label>
                      <select id="opciones" name="opciones"> ` 
+      }else if(type == "textiles"){
+        opciones += `     
+        <label for="opciones">Selecciona un aroma:</label>
+                     <select id="opciones" onchange="cambio_color()" name="opciones"> ` 
       }
       for(i in producto[5]){
         opciones += `<option value="${producto[5][i]}")">${producto[5][i]}</option> ` 
@@ -152,7 +159,7 @@ function ver_mas(type, pos){
           <p class="mb-0">Blend dulce con tinte frutal. Notas de sandía, sándalo, vainilla y coco. Crea un espacio de concentración y relajación.</p>
         </div>
       </div>
-  </div>` 
+    </div>` 
     }
 
     document.getElementById("main").insertAdjacentHTML('afterbegin', ` 
@@ -185,6 +192,7 @@ function ver_mas(type, pos){
                     <div class="fs-5 mb-5">
                     ${opciones}
                     </div>
+                    <div id="color-box" style=" width: 100px; height:50px !important;background-color: transparent;"></div> 
                     <div id="aromas_tipo" class="fs-5 mb-5">
                     ${aromas}
                     </div>
@@ -199,6 +207,26 @@ function ver_mas(type, pos){
             </div>
         </div>
 </section>`);
+}
+
+function cambio_color(){
+  let value = document.getElementById("opciones").value;
+
+  document.getElementById("color-box").setAttribute("style", "border: 2px solid black !important;  width: 100px; height:50px !important;");
+
+  if(value == "crudo" || value == "Crudo con bordado beige" || value == "Crudo con bordado marron"){
+    document.getElementById("color-box").style.backgroundColor = "#D7DDDF";
+  }else if(value == "khaki" || value == "Khaki con bordado crudo"){
+    document.getElementById("color-box").style.backgroundColor = "#999089";
+  }else if(value == "Blanco con bordado beige"){
+    document.getElementById("color-box").style.backgroundColor = "#ffffff";
+  }else if(value == "avellana" || value == "Avellana con bordado crudo"){
+    document.getElementById("color-box").style.backgroundColor = "#AB8652";
+  }else if(value == "Arena con bordado beige" || value == "arena"){
+    document.getElementById("color-box").style.backgroundColor = "#BBB6B0";
+  }else if("verde militar"){
+    document.getElementById("color-box").style.backgroundColor = "#48584E";
+  }
 }
 
 function cambio_aroma(){
