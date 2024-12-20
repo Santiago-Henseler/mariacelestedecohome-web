@@ -108,7 +108,6 @@ function ver_mas(type, pos){
     window.scrollTo(0,0);
     let producto = get_products(type)[pos];
 
-
     let carrusel = "";
 
     for (i in producto[4]){
@@ -207,6 +206,11 @@ function ver_mas(type, pos){
             </div>
         </div>
 </section>`);
+if(type == "textiles"){
+  cambio_color();
+}
+window.scrollTo(0,0);
+window.scrollTo(0,0);
 }
 
 function cambio_color(){
