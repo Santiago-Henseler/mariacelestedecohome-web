@@ -219,7 +219,7 @@ function cambio_color(){
   document.getElementById("color-box").setAttribute("style", "border: 2px solid black !important;  width: 100px; height:50px !important;");
 
   if(value == "crudo" || value == "Crudo con bordado beige" || value == "Crudo con bordado marron"){
-    document.getElementById("color-box").style.backgroundColor = "#D7DDDF";
+    document.getElementById("color-box").style.backgroundColor = "#D9DEE1";
   }else if(value == "khaki" || value == "Khaki con bordado crudo"){
     document.getElementById("color-box").style.backgroundColor = "#999089";
   }else if(value == "Blanco con bordado beige"){
@@ -227,7 +227,7 @@ function cambio_color(){
   }else if(value == "avellana" || value == "Avellana con bordado crudo"){
     document.getElementById("color-box").style.backgroundColor = "#AB8652";
   }else if(value == "Arena con bordado beige" || value == "arena"){
-    document.getElementById("color-box").style.backgroundColor = "#BBB6B0";
+    document.getElementById("color-box").style.backgroundColor = "#BCB9B2";
   }else if("verde militar"){
     document.getElementById("color-box").style.backgroundColor = "#48584E";
   }
@@ -307,13 +307,13 @@ function abrir_carrito(){
                 </td>
                 <td>$${carrito[i]["precio"]}</td>
                 <td>
-                <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+                <div onclick="cambiar_cantidad('${carrito[i]["nombre"]}', '${carrito[i]["tipo"]}', 'menos')" class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
                     <div class="input-group-prepend">
-                    <button class="btn btn-outline-black decrease" type="button">&minus;</button>
+                    <button   class="btn btn-outline-black decrease" type="button">&minus;</button>
                     </div>
-                    <input type="text" class="form-control text-center quantity-amount" value="${carrito[i]["cantidad"]}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                    <div class="input-group-append">
-                    <button class="btn btn-outline-black increase" type="button">&plus;</button>
+                    <input type="text" class="form-control text-center quantity-amount" value="${carrito[i]["cantidad"]}" readonly placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <div onclick="cambiar_cantidad('${carrito[i]["nombre"]}', '${carrito[i]["tipo"]}', 'mas')" class="input-group-append">
+                    <button  class="btn btn-outline-black increase" type="button">&plus;</button>
                     </div>
                 </div>
         
@@ -375,8 +375,19 @@ function abrir_carrito(){
                         <p class="mb-0">Mercado pago - Transferencia - Efectivo</p>
                       </div>
                     </div>
+
                 </div>
 
+                <div class="border p-3 mb-5">
+                <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapseenvio" role="button" aria-expanded="true" aria-controls="collapseenvio">Envio</a></h3>
+
+                <div class="collapse" id="collapseenvio">
+                  <div class="py-2">
+                    <p class="mb-0">Envios a todo el pais</p>
+                    <p class="mb-0">Una vez hecha la compra el envio se coordina a través de WhatsApp.</p>
+                  </div>
+                </div>
+                </div>
                   <div class="row">
                     <div class="col-md-12">
                     <button class="btn btn-lg py-3 btn-block" onclick="enviar_compra()">Terminar compra</button>
@@ -433,6 +444,24 @@ function borrar_producto(nombre, selected){
 
     carrito_abierto = true;
     abrir_carrito();
+}
+
+function cambiar_cantidad(nombre, tipo, forma){
+  for (i in carrito) {
+    if (carrito[i]["nombre"] == nombre, carrito[i]["tipo"] == tipo) {
+        if(forma == "menos"){
+          carrito[i]["cantidad"] -= 1;
+
+          if(carrito[i]["cantidad"] <= 0){
+            borrar_producto(nombre, tipo)
+          }
+
+        }else{
+          carrito[i]["cantidad"] += 2;
+        }
+    }
+  }
+  abrir_carrito()
 }
 
 function existe_producto(producto, cantidad, selected){
