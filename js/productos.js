@@ -1,7 +1,7 @@
 const AROMAS = {
     0:2,
     1: ["Home spray", 17000, "400mm", "Realizado con perfumeria fina para aromatizar tus textiles y generos mas delicados.", ["imagenes/aromas/spray1.jpg", "imagenes/aromas/spray2.jpg", "imagenes/aromas/spray3.jpg",  "imagenes/aromas/spray4.jpg"], ["Oslo", "Verbena", "White Flowers", "Orange Pepper", "Berna"]],
-    2: ["Home diffuser", 18000,"300mm", "Difusor de larga duracion para aromatizar tus ambientes. Incluye 4 varillas negras", ["imagenes/aromas/difusor1.jpg", "imagenes/aromas/difusor2.jpg", "imagenes/aromas/difusor3.jpg",  "imagenes/aromas/difusor4.jpg"], ["Oslo", "Verbena", "White Flowers", "Orange Pepper", "Berna"]],
+    2: ["Home diffuser", 18000,"300mm", "Difusor de larga duracion para aromatizar tus ambientes. Incluye 4 varillas negras", ["imagenes/aromas/difusor1.jpg", "imagenes/aromas/difusor2.jpg", "imagenes/aromas/difusor3.jpg"], ["Oslo", "Verbena", "White Flowers", "Orange Pepper", "Berna"]],
 }
 
 const BATH = {
@@ -15,12 +15,13 @@ const TEXTILES = {
     0:3,
     1: ["Almohadones lisos tusor", 22000, "50cm x 50cm", "Hechos en tela tusor. Incluyen relleno de vellón siliconado y cierre metálico oculto. Con funda extraible.", ["imagenes/almohadon/liso1.jpg", "imagenes/almohadon/liso2.jpg", "imagenes/almohadon/liso3.jpg", "imagenes/almohadon/liso4.jpg", "imagenes/almohadon/liso5.jpg"], ["verde militar", "avellana", "arena", "crudo", "khaki"]],
     2: ["Almohadones love tusor", 25000,"30cm x 60cm", "Bordado artesanal a mano en distintos tipos de lana sobre tela tusor. Incluyen relleno de vellón siliconado y cierre metálico oculto. Con funda extraible.", ["imagenes/almohadon/almohadon1.jpg", "imagenes/almohadon/love2.jpg",  "imagenes/almohadon/love3.jpg", "imagenes/almohadon/love4.jpg"], ["Blanco con bordado beige", "Crudo con bordado beige", "Crudo con bordado marron", "Khaki con bordado crudo", "Avellana con bordado crudo"]],
-    3: ["Almohadon mandala tusor", 26000, "50cm x 50cm", "Bordado artesanal a mano en distintos tipos de lana sobre tela tusor. Incluyen relleno de vellón siliconado y cierre metálico oculto. Con funda extraible.", ["imagenes/almohadon/almohadon2.jpg",  "imagenes/almohadon/mandala2.jpg",  "imagenes/almohadon/mandala3.jpg"], ["Arena con bordado beige", "Crudo con bordado beige", "Khaki con bordado crudo"]],
+    3: ["Almohadon mandala tusor", 26000, "50cm x 50cm", "Bordado artesanal a mano en distintos tipos de lana sobre tela tusor. Incluyen relleno de vellón siliconado y cierre metálico oculto. Con funda extraible.", ["imagenes/almohadon/mandala1.jpg",  "imagenes/almohadon/mandala2.jpg",  "imagenes/almohadon/mandala3.jpg"], ["Arena con bordado beige", "Crudo con bordado beige", "Khaki con bordado crudo"]],
 }
 
 const DECO = {
-    0:1,
-    1: ["Bandejas marmoladas", 10000, "10cm x 18cm", "Bandejas simil marmol de resina", ["imagenes/deco/tabla1.jpg", "imagenes/deco/tabla2.jpg", "imagenes/deco/tabla3.jpg"], ["Blanca", "Negra"]]
+    0:2,
+    1: ["Bandeja marmolada chica", 10000, "10cm x 18cm", "Bandejas simil marmol de resina", ["imagenes/deco/tabla1.jpg", "imagenes/deco/tabla2.jpg", "imagenes/deco/tabla3.jpg"], ["Blanca", "Negra"]],
+    2: ["Bandeja marmolada maxi", 16000, "24cm x 12cm", "Bandejas simil marmol de resina", ["imagenes/deco/tabla2.jpg", "imagenes/deco/tabla1.jpg", "imagenes/deco/tabla3.jpg"], ["Blanca", "Negra"]],
 }
 
 const GIFT = {

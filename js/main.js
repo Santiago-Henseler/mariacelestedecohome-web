@@ -161,6 +161,18 @@ function ver_mas(type, pos){
     </div>` 
     }
 
+    let colores = ""
+
+    if(type == "textiles"){
+      if(producto[0] == "Almohadones lisos tusor"){
+        colores = `<img src="imagenes/almohadon/lisocolor.jpg" class="d-block w-100"> </br>`
+      }else if(producto[0] == "Almohadones love tusor"){
+        colores = `<img src="imagenes/almohadon/lovecolor.jpg" class="d-block w-100"> </br>`
+      }else{
+        colores = `<img src="imagenes/almohadon/mandalacolor.jpg" class="d-block w-100"> </br>`
+      }
+    }
+
     document.getElementById("main").insertAdjacentHTML('afterbegin', ` 
     <section class="py-5" id="producto_abierto">
         <div class="container px-4 px-lg-5 my-5">
@@ -194,6 +206,9 @@ function ver_mas(type, pos){
                     <div id="color-box" style=" width: 100px; height:50px !important;background-color: transparent;"></div> 
                     <div id="aromas_tipo" class="fs-5 mb-5">
                     ${aromas}
+                    </div>
+                    <div>
+                    ${colores}
                     </div>
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem">
@@ -257,9 +272,9 @@ function aroma_type(type){
   }else if(type == "Verbena"){
     return "Blend herbal y cítrico. Notas de lima, limón y verbena. Transmite una sensación de energía y optimismo.";
   }else if(type == "White Flowers"){
-    return "blend floral envolvente. Notas de flores blancas, nardos, jazmines, junquillos y tuberosas. Evocan un ambiente mágico y tranquilo";
+    return "Blend floral envolvente. Notas de flores blancas, nardos, jazmines, junquillos y tuberosas. Evocan un ambiente mágico y tranquilo";
   }else if(type == "Orange Pepper"){
-    return "blend cítrico y picante. Notas de naranja y cítricos que contrastan con notas especiadas y picantes. Genera una sensación de bienestar y alegría.";
+    return "Blend cítrico y picante. Notas de naranja y cítricos que contrastan con notas especiadas y picantes. Genera una sensación de bienestar y alegría.";
   }else{
     return "Blend cítrico con tinte floral. Notas de bergamota, lino y flores cítricas. Otorgan un momento de calma y frescura."
   }
