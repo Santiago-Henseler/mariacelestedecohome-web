@@ -437,7 +437,7 @@ function enviar_compra(){
 
     }
 
-    let telefono = "+5401124030967";
+    let telefono = "+5401141461584";
 
     let url = `https://api.whatsapp.com/send?phone=${telefono}&text=%2A_Maria+Celeste+Home+%26+Deco_%2A%0A%0Aproducto+++%7C++tipo+++%7C++cantidad++%7C++total+++%0A+${prod}%0A%0A%2ATotal%3A%2A+%24${precioFinal}`;
 
