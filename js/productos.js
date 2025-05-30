@@ -20,8 +20,8 @@ const TEXTILES = {
 
 const DECO = {
     0:2,
-    1: ["Bandeja marmolada chica", 14000, "10cm x 18cm", "Bandejas simil marmol de resina", ["imagenes/deco/tabla1.jpg", "imagenes/deco/tabla2.jpg", "imagenes/deco/tabla3.jpg"], ["Blanca", "Negra"]],
-    2: ["Bandeja marmolada maxi", 18000, "24cm x 12cm", "Bandejas simil marmol de resina", ["imagenes/deco/tabla2.jpg", "imagenes/deco/tabla1.jpg", "imagenes/deco/tabla3.jpg"], ["Blanca", "Negra"]],
+    1: ["Bandeja marmolada chica blanca o negra", 14000, "10cm x 18cm", "Bandejas simil marmol de resina", ["imagenes/deco/tabla1.jpg", "imagenes/deco/tabla2.jpg", "imagenes/deco/tabla3.jpg"], ["Blanca", "Negra"]],
+    2: ["Bandeja marmolada maxi blanca o negra", 18000, "24cm x 12cm", "Bandejas simil marmol de resina", ["imagenes/deco/tabla2.jpg", "imagenes/deco/tabla1.jpg", "imagenes/deco/tabla3.jpg"], ["Blanca", "Negra"]],
 }
 
 const GIFT = {
