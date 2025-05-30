@@ -26,7 +26,7 @@ const DECO = {
 
 const GIFT = {
     0:5,
-    1: ["GiftCard Amarilla", 20000, "", "", ["imagenes/gift/gif1.jpg"], []],
+    1: ["GiftCard Amarilla", 15000, "", "", ["imagenes/gift/gif1.jpg"], []],
     2: ["GiftCard Naraja", 30000, "", "", ["imagenes/gift/gif2.jpg"], []],
     3: ["GiftCard Marron", 40000, "", "", ["imagenes/gift/gif3.jpg"], []],
     4: ["GiftCard Verde", 50000, "", "", ["imagenes/gift/gif4.jpg"], []],
